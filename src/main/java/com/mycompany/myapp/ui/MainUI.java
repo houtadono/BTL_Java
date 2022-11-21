@@ -3,6 +3,7 @@ package com.mycompany.myapp.ui;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
 
 /**
  *
@@ -15,6 +16,7 @@ public class MainUI extends javax.swing.JFrame {
     static int HEIGHT = gd.getDisplayMode().getHeight();
     private ManagerStudentPanel mStudent = null;
     private ManagerClassPanel mClass = null;
+    private HelpPanel mHelp = null;
 
     /**
      * Creates new form MainUI
@@ -43,13 +45,13 @@ public class MainUI extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         quanLyLH = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
-        jButton3 = new javax.swing.JButton();
+        danhSachMonHoc = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
-        jButton1 = new javax.swing.JButton();
+        taiKhoan = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
-        jButton4 = new javax.swing.JButton();
+        caiDat = new javax.swing.JButton();
         jSeparator5 = new javax.swing.JToolBar.Separator();
-        jButton2 = new javax.swing.JButton();
+        troGiup = new javax.swing.JButton();
         jTabPanel = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -93,63 +95,63 @@ public class MainUI extends javax.swing.JFrame {
         toolBar.add(quanLyLH);
         toolBar.add(jSeparator2);
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/List-mon-hoc-64.png"))); // NOI18N
-        jButton3.setText("Danh Sách Môn Học");
-        jButton3.setMaximumSize(new java.awt.Dimension(270, 72));
-        jButton3.setMinimumSize(new java.awt.Dimension(260, 72));
-        jButton3.setPreferredSize(new java.awt.Dimension(240, 72));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        danhSachMonHoc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        danhSachMonHoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/List-mon-hoc-64.png"))); // NOI18N
+        danhSachMonHoc.setText("Danh Sách Môn Học");
+        danhSachMonHoc.setMaximumSize(new java.awt.Dimension(270, 72));
+        danhSachMonHoc.setMinimumSize(new java.awt.Dimension(260, 72));
+        danhSachMonHoc.setPreferredSize(new java.awt.Dimension(240, 72));
+        danhSachMonHoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                danhSachMonHocActionPerformed(evt);
             }
         });
-        toolBar.add(jButton3);
+        toolBar.add(danhSachMonHoc);
         toolBar.add(jSeparator3);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/account.png"))); // NOI18N
-        jButton1.setText("Tài Khoản");
-        jButton1.setFocusable(false);
-        jButton1.setMaximumSize(new java.awt.Dimension(270, 72));
-        jButton1.setMinimumSize(new java.awt.Dimension(260, 72));
-        jButton1.setPreferredSize(new java.awt.Dimension(240, 72));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        taiKhoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        taiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/account.png"))); // NOI18N
+        taiKhoan.setText("Tài Khoản");
+        taiKhoan.setFocusable(false);
+        taiKhoan.setMaximumSize(new java.awt.Dimension(270, 72));
+        taiKhoan.setMinimumSize(new java.awt.Dimension(260, 72));
+        taiKhoan.setPreferredSize(new java.awt.Dimension(240, 72));
+        taiKhoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                taiKhoanActionPerformed(evt);
             }
         });
-        toolBar.add(jButton1);
+        toolBar.add(taiKhoan);
         toolBar.add(jSeparator4);
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/setting.png"))); // NOI18N
-        jButton4.setText("Cài Đặt");
-        jButton4.setFocusable(false);
-        jButton4.setMaximumSize(new java.awt.Dimension(270, 72));
-        jButton4.setMinimumSize(new java.awt.Dimension(260, 72));
-        jButton4.setPreferredSize(new java.awt.Dimension(240, 72));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        caiDat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        caiDat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/setting.png"))); // NOI18N
+        caiDat.setText("Cài Đặt");
+        caiDat.setFocusable(false);
+        caiDat.setMaximumSize(new java.awt.Dimension(270, 72));
+        caiDat.setMinimumSize(new java.awt.Dimension(260, 72));
+        caiDat.setPreferredSize(new java.awt.Dimension(240, 72));
+        caiDat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                caiDatActionPerformed(evt);
             }
         });
-        toolBar.add(jButton4);
+        toolBar.add(caiDat);
         toolBar.add(jSeparator5);
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/support.png"))); // NOI18N
-        jButton2.setText("Trợ Giúp");
-        jButton2.setFocusable(false);
-        jButton2.setMaximumSize(new java.awt.Dimension(260, 72));
-        jButton2.setMinimumSize(new java.awt.Dimension(260, 72));
-        jButton2.setPreferredSize(new java.awt.Dimension(240, 72));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        troGiup.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        troGiup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/support.png"))); // NOI18N
+        troGiup.setText("Trợ Giúp");
+        troGiup.setFocusable(false);
+        troGiup.setMaximumSize(new java.awt.Dimension(260, 72));
+        troGiup.setMinimumSize(new java.awt.Dimension(260, 72));
+        troGiup.setPreferredSize(new java.awt.Dimension(240, 72));
+        troGiup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                troGiupActionPerformed(evt);
             }
         });
-        toolBar.add(jButton2);
+        toolBar.add(troGiup);
 
         jTabPanel.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabPanel.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
@@ -208,22 +210,28 @@ public class MainUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void taiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taiKhoanActionPerformed
         // TODO add your handling code here:
 //        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_taiKhoanActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void danhSachMonHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_danhSachMonHocActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_danhSachMonHocActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void troGiupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_troGiupActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        if (mHelp == null) {
+            mHelp = new HelpPanel();
+            jTabPanel.addTab("Trợ Giúp", mHelp);
+            mHelp.setVisible(true);
+        }
+        jTabPanel.setSelectedComponent(mHelp);
+    }//GEN-LAST:event_troGiupActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void caiDatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caiDatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_caiDatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,10 +264,8 @@ public class MainUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton caiDat;
+    private javax.swing.JButton danhSachMonHoc;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
@@ -268,6 +274,8 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabPanel;
     private javax.swing.JButton quanLyLH;
     private javax.swing.JButton quanLySV;
+    private javax.swing.JButton taiKhoan;
     private javax.swing.JToolBar toolBar;
+    private javax.swing.JButton troGiup;
     // End of variables declaration//GEN-END:variables
 }

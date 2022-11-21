@@ -47,15 +47,16 @@
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="buttonThem" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="xuatExel" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="buttonFind" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="buttonThem" max="32767" attributes="0"/>
+                  <Component id="buttonFind" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="nhapExel" max="32767" attributes="0"/>
+                  <Component id="xuatExel" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,6 +69,7 @@
                   <Component id="comboBoxFind" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtFind" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonFind" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="xuatExel" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -76,7 +78,7 @@
                   <Component id="radioGiam" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="comboBoxSort" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buttonThem" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="xuatExel" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="nhapExel" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
@@ -248,6 +250,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="xuatExelActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="nhapExel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nh&#x1ead;p Exel"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nhapExelActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

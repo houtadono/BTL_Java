@@ -86,6 +86,7 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         buttonThem = new javax.swing.JButton();
         xuatExel = new javax.swing.JButton();
+        nhapExel = new javax.swing.JButton();
 
         comboBoxFind.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã sinh viên", "Họ và tên", "Lớp", "Giới tính", "Ngày sinh", "Địa Chỉ" }));
 
@@ -161,6 +162,13 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
             }
         });
 
+        nhapExel.setText("Nhập Exel");
+        nhapExel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nhapExelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,13 +195,14 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(radioGiam)))
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonThem)
-                        .addGap(18, 18, 18)
-                        .addComponent(xuatExel))
-                    .addComponent(buttonFind))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonFind, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nhapExel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(xuatExel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +212,8 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(comboBoxFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonFind))
+                    .addComponent(buttonFind)
+                    .addComponent(xuatExel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -211,7 +221,7 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
                     .addComponent(radioGiam)
                     .addComponent(comboBoxSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonThem)
-                    .addComponent(xuatExel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nhapExel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -299,11 +309,15 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonThemActionPerformed
 
     private void xuatExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xuatExelActionPerformed
-        IOExelFile excelFile = new IOExelFile();
+        OutExelFile excelFile = new OutExelFile();
         excelFile.setVisible(true);
         excelFile.requestFocus();
         excelFile.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }//GEN-LAST:event_xuatExelActionPerformed
+
+    private void nhapExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nhapExelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nhapExelActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonFind;
@@ -314,6 +328,7 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton nhapExel;
     private javax.swing.JRadioButton radioGiam;
     private javax.swing.ButtonGroup radioSort;
     private javax.swing.JRadioButton radioTang;

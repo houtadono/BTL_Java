@@ -8,8 +8,6 @@ import com.mycompany.myapp.dao.SinhVienDao;
 import com.mycompany.myapp.model.SinhVien;
 import java.awt.Color;
 import javax.swing.JFileChooser;
-import java.awt.Desktop;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -26,7 +24,7 @@ import org.apache.poi.xssf.streaming.SXSSFWorkbook;
  *
  * @author Nakaa2314
  */
-public class IOExelFile extends javax.swing.JFrame {
+public class OutExelFile extends javax.swing.JFrame {
 
     private JFileChooser chooser;
     private String choosePath = System.getProperty("user.home") + "\\Desktop";
@@ -44,7 +42,7 @@ public class IOExelFile extends javax.swing.JFrame {
      * Creates new form IOExelFile
      *
      */
-    public IOExelFile() {
+    public OutExelFile() {
         super("Xuất File Exel");
         initComponents();
         statusSave.setText("");
@@ -330,7 +328,7 @@ public class IOExelFile extends javax.swing.JFrame {
                 statusSave.setText("Trạng Thái: Lưu File Thành Công");
                 statusSave.setForeground(Color.black);
             } catch (IOException ex) {
-                Logger.getLogger(IOExelFile.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(OutExelFile.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         } else {
@@ -347,7 +345,6 @@ public class IOExelFile extends javax.swing.JFrame {
         } else {
             sexCheck = false;
         }
-        System.out.println("Giói tính: " + sexCheck);
     }//GEN-LAST:event_gioiTinhActionPerformed
 
     private void ngaySinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ngaySinhActionPerformed
@@ -356,7 +353,6 @@ public class IOExelFile extends javax.swing.JFrame {
         } else {
             dobCheck = false;
         }
-        System.out.println("Ngày Sinh: " + dobCheck);
     }//GEN-LAST:event_ngaySinhActionPerformed
 
     private void soDienThoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_soDienThoaiActionPerformed
@@ -365,7 +361,6 @@ public class IOExelFile extends javax.swing.JFrame {
         } else {
             phoneCheck = false;
         }
-        System.out.println("Số Điện Thoại: " + phoneCheck);
     }//GEN-LAST:event_soDienThoaiActionPerformed
 
     private void emailTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTActionPerformed
@@ -374,7 +369,6 @@ public class IOExelFile extends javax.swing.JFrame {
         } else {
             emailCheck = false;
         }
-        System.out.println("Email: " + emailCheck);
     }//GEN-LAST:event_emailTActionPerformed
 
     private void diaChiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_diaChiActionPerformed
@@ -383,7 +377,6 @@ public class IOExelFile extends javax.swing.JFrame {
         } else {
             addressCheck = false;
         }
-        System.out.println("Địa Chỉ: " + addressCheck);
     }//GEN-LAST:event_diaChiActionPerformed
 
     private void ghiChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ghiChuActionPerformed
@@ -392,7 +385,6 @@ public class IOExelFile extends javax.swing.JFrame {
         } else {
             noteCheck = false;
         }
-        System.out.println("Ghi Chú" + noteCheck);
     }//GEN-LAST:event_ghiChuActionPerformed
 
     /**
@@ -412,20 +404,21 @@ public class IOExelFile extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IOExelFile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OutExelFile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IOExelFile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OutExelFile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IOExelFile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OutExelFile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IOExelFile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OutExelFile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IOExelFile().setVisible(true);
+                new OutExelFile().setVisible(true);
             }
         });
     }
