@@ -1,4 +1,5 @@
 package com.mycompany.myapp.ui;
+
 import com.mycompany.myapp.dao.SinhVienDao;
 import com.mycompany.myapp.helpers.MessageDialogHelper;
 import com.mycompany.myapp.model.SinhVien;
@@ -10,22 +11,26 @@ import java.util.List;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+
 /**
  *
  * @author Houta
  */
 public class ManagerStudentPanel extends javax.swing.JPanel {
+
     private DefaultTableModel tableModel;
     private List<SinhVien> list;
-    private String strTypeFind="",strFind="";
-    private javax.swing.JRadioButton preRadio ;
+    private String strTypeFind = "", strFind = "";
+    private javax.swing.JRadioButton preRadio;
     private StudentInfor studentInfor = null;
     private int chooseSV = 0;
+
     /**
      * Creates new form PanelTest
      */
@@ -35,27 +40,29 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
         loadDataTable();
     }
 
-    private void initTable(){
+    private void initTable() {
         tableModel = new DefaultTableModel();
-        
-        tableModel.setColumnIdentifiers(new String[]{"Mã Sinh Viên","Tên Sinh Viên"
-                ,"Lớp","Giới Tính","Ngày Sinh","Số ĐT","Email","Địa Chỉ",""});
+
+        tableModel.setColumnIdentifiers(new String[]{"Mã Sinh Viên", "Tên Sinh Viên",
+            "Lớp", "Giới Tính", "Ngày Sinh", "Số ĐT", "Email", "Địa Chỉ", ""});
         tableSV.setModel(tableModel);
-        list = new SinhVienDao().findAll("","","",true);
+        list = new SinhVienDao().findAll("", "", "", true);
         preRadio = radioTang;
     }
-    
-    private void loadDataTable(){
+
+    private void loadDataTable() {
         tableModel.setRowCount(0);
-        for(SinhVien it : list)
-            tableModel.addRow(new Object[]{it.getMaSV(),it.getTenSV(),it.getLopSV()
-                ,it.getGioiTinh(),it.getNgaySinh(),it.getSoDienThoai(),it.getEmail(),it.getDiaChi()});
-        
+        for (SinhVien it : list) {
+            tableModel.addRow(new Object[]{it.getMaSV(), it.getTenSV(), it.getLopSV(),
+                it.getGioiTinh(), it.getNgaySinh(), it.getSoDienThoai(), it.getEmail(), it.getDiaChi()});
+        }
+
         TableColumn buttonColumn = tableSV.getColumnModel().getColumn(8);
         buttonColumn.setCellRenderer(new ButtonRenderer());
         buttonColumn.setCellEditor(new ButtonEditor(new JCheckBox()));
         tableModel.fireTableDataChanged();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,7 +85,8 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
         tableSV = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         buttonThem = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        xuatExel = new javax.swing.JButton();
+        nhapExel = new javax.swing.JButton();
 
         comboBoxFind.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã sinh viên", "Họ và tên", "Lớp", "Giới tính", "Ngày sinh", "Địa Chỉ" }));
 
@@ -147,7 +155,19 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Xuất");
+        xuatExel.setText("Xuất Exel");
+        xuatExel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xuatExelActionPerformed(evt);
+            }
+        });
+
+        nhapExel.setText("Nhập Exel");
+        nhapExel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nhapExelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -157,7 +177,7 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jSeparator1)
                 .addContainerGap())
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 703, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,13 +195,14 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(radioGiam)))
                 .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonThem)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1))
-                    .addComponent(buttonFind))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonFind, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(nhapExel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(xuatExel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +212,8 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1)
                     .addComponent(comboBoxFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonFind))
+                    .addComponent(buttonFind)
+                    .addComponent(xuatExel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -199,7 +221,7 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
                     .addComponent(radioGiam)
                     .addComponent(comboBoxSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonThem)
-                    .addComponent(jButton1))
+                    .addComponent(nhapExel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -209,8 +231,8 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
 
     private void buttonFindActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFindActionPerformed
         // TODO add your handling code here:
-        List<SinhVien> tmpList = new SinhVienDao().findAll((String) comboBoxFind.getSelectedItem(),txtFind.getText(), "",true);
-        if(tmpList.isEmpty()){
+        List<SinhVien> tmpList = new SinhVienDao().findAll((String) comboBoxFind.getSelectedItem(), txtFind.getText(), "", true);
+        if (tmpList.isEmpty()) {
             StringBuilder notice = new StringBuilder("Không tìm thấy sinh viên có ");
             notice.append(comboBoxFind.getSelectedItem()).append(": ");
             notice.append(txtFind.getText());
@@ -229,24 +251,27 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
     private void comboBoxSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSortActionPerformed
         // TODO add your handling code here:
         radioTang.setSelected(true);
-        if(comboBoxSort.getSelectedItem().equals("Tên"))
+        if (comboBoxSort.getSelectedItem().equals("Tên")) {
             Collections.sort(list);
-        else 
-            list = new SinhVienDao().findAll(strTypeFind,strFind, (String) comboBoxSort.getSelectedItem(),true);
+        } else {
+            list = new SinhVienDao().findAll(strTypeFind, strFind, (String) comboBoxSort.getSelectedItem(), true);
+        }
         loadDataTable();
     }//GEN-LAST:event_comboBoxSortActionPerformed
 
     private void radioTangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTangActionPerformed
         // TODO add your handling code here:
-        if(preRadio == radioTang){
+        if (preRadio == radioTang) {
             return;
         }
-        if(comboBoxSort.getSelectedItem().equals("Tên")){
+        if (comboBoxSort.getSelectedItem().equals("Tên")) {
             Collections.sort(list);
-            if(radioGiam.isSelected()) Collections.reverse(list);
+            if (radioGiam.isSelected()) {
+                Collections.reverse(list);
+            }
+        } else {
+            list = new SinhVienDao().findAll(strTypeFind, strFind, (String) comboBoxSort.getSelectedItem(), true);
         }
-        else 
-            list = new SinhVienDao().findAll(strTypeFind,strFind, (String) comboBoxSort.getSelectedItem(),true);
         loadDataTable();
         preRadio = radioTang;
         radioTang.setBackground(Color.YELLOW);
@@ -255,13 +280,14 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
 
     private void radioGiamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioGiamActionPerformed
         // TODO add your handling code here:
-        if(preRadio == radioGiam){
+        if (preRadio == radioGiam) {
             return;
         }
-        if(comboBoxSort.getSelectedItem().equals("Tên"))
+        if (comboBoxSort.getSelectedItem().equals("Tên")) {
             Collections.reverse(list);
-        else 
-            list = new SinhVienDao().findAll(strTypeFind,strFind, (String) comboBoxSort.getSelectedItem(),false);
+        } else {
+            list = new SinhVienDao().findAll(strTypeFind, strFind, (String) comboBoxSort.getSelectedItem(), false);
+        }
         loadDataTable();
         preRadio = radioGiam;
         radioTang.setSelected(false);
@@ -274,29 +300,44 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
 
     private void buttonThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonThemActionPerformed
         // TODO add your handling code here:
-        if(studentInfor != null) studentInfor.dispose();
-        studentInfor = new StudentInfor(list,tableModel);
+        if (studentInfor != null) {
+            studentInfor.dispose();
+        }
+        studentInfor = new StudentInfor(list, tableModel);
         studentInfor.setAlwaysOnTop(true);
         studentInfor.setVisible(true);// 
     }//GEN-LAST:event_buttonThemActionPerformed
+
+    private void xuatExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xuatExelActionPerformed
+        OutExelFile excelFile = new OutExelFile();
+        excelFile.setVisible(true);
+        excelFile.requestFocus();
+        excelFile.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+    }//GEN-LAST:event_xuatExelActionPerformed
+
+    private void nhapExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nhapExelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nhapExelActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonFind;
     private javax.swing.JButton buttonThem;
     private javax.swing.JComboBox<String> comboBoxFind;
     private javax.swing.JComboBox<String> comboBoxSort;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton nhapExel;
     private javax.swing.JRadioButton radioGiam;
     private javax.swing.ButtonGroup radioSort;
     private javax.swing.JRadioButton radioTang;
     private javax.swing.JTable tableSV;
     private javax.swing.JTextField txtFind;
+    private javax.swing.JButton xuatExel;
     // End of variables declaration//GEN-END:variables
     class ButtonEditor extends DefaultCellEditor {
+
         protected JButton button;
         private boolean isPushed;
 
@@ -307,12 +348,15 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
                 fireEditingStopped();
             });
         }
+
         @Override
         protected void fireEditingStopped() {
             super.fireEditingStopped();
             chooseSV = tableSV.getSelectedRow();
-            if(studentInfor!= null) studentInfor.dispose();
-            studentInfor = new StudentInfor(list,chooseSV,tableModel);
+            if (studentInfor != null) {
+                studentInfor.dispose();
+            }
+            studentInfor = new StudentInfor(list, chooseSV, tableModel);
             studentInfor.setAlwaysOnTop(true);
             studentInfor.setVisible(true);
         }
@@ -320,12 +364,14 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
 }
 
 class ButtonRenderer extends JButton implements TableCellRenderer {
+
     public ButtonRenderer() {
         setOpaque(true);
     }
+
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value,
-        boolean isSelected, boolean hasFocus, int row, int column) {
+            boolean isSelected, boolean hasFocus, int row, int column) {
         if (isSelected) {
             setForeground(table.getSelectionForeground());
             setBackground(table.getSelectionBackground());

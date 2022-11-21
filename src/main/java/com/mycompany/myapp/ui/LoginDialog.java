@@ -1,8 +1,11 @@
 package com.mycompany.myapp.ui;
+
 import com.mycompany.myapp.dao.AccountDao;
 import com.mycompany.myapp.helpers.DataValidator;
 import com.mycompany.myapp.helpers.MessageDialogHelper;
 import com.mycompany.myapp.model.Account;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Houta
@@ -11,11 +14,12 @@ public class LoginDialog extends javax.swing.JFrame {
 
     /**
      * Creates new form JFrameSign
-     * 
-     * 
+     *
+     *
      */
     public LoginDialog() {
         initComponents();
+
         setLocationRelativeTo(null);
     }
 
@@ -28,7 +32,6 @@ public class LoginDialog extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelAvara = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txtUsername = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -37,10 +40,10 @@ public class LoginDialog extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         buttonDangNhap = new javax.swing.JButton();
         buttonThoat = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabelAvara.setText("jLabel1");
 
         txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,36 +123,47 @@ public class LoginDialog extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonDangNhap)
                     .addComponent(buttonThoat))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/login.png"))); // NOI18N
+        jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel4.setText("Login");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelAvara, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(15, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelAvara, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
-        buttonDangNhapActionPerformed(evt);
-    }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void buttonThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonThoatActionPerformed
         System.exit(0);
@@ -159,14 +173,14 @@ public class LoginDialog extends javax.swing.JFrame {
         StringBuilder sb = new StringBuilder();
         DataValidator.validateEmpty(txtUsername, sb, "Tên đăng nhập không được để trống");
         DataValidator.validateEmpty(txtPassword, sb, "Mật khẩu không được để trống");
-        if(sb.length()>0){
+        if (sb.length() > 0) {
             MessageDialogHelper.showErrorDialog(this, sb.toString(), "Lỗi!");
             return;
         }
         Account acc = AccountDao.checkLogin(txtUsername.getText(), new String(txtPassword.getPassword()));
-        if(acc == null){
+        if (acc == null) {
             MessageDialogHelper.showErrorDialog(this, "Tên đăng nhập hoặc Mật khẩu sai", "Đăng nhập không thành công!");
-        }else{
+        } else {
             MessageDialogHelper.showMessageDialog(this, "Đăng nhập thành công :3 ", "Thông báo!");
             this.dispose();
         }
@@ -175,6 +189,10 @@ public class LoginDialog extends javax.swing.JFrame {
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         buttonDangNhapActionPerformed(evt);
     }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+        buttonDangNhapActionPerformed(evt);
+    }//GEN-LAST:event_txtUsernameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,7 +217,7 @@ public class LoginDialog extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -208,12 +226,6 @@ public class LoginDialog extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             LoginDialog login = new LoginDialog();
-//            login.addWindowListener(new java.awt.event.WindowAdapter(){
-//                @Override
-//                public void windowClosing( java.awt.event.WindowEvent e){
-//                    System.exit(0);
-//                }
-//            });
             login.setVisible(true);
         });
     }
@@ -221,9 +233,10 @@ public class LoginDialog extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonDangNhap;
     private javax.swing.JButton buttonThoat;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabelAvara;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPasswordField txtPassword;

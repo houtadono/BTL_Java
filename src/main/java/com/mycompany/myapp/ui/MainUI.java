@@ -1,27 +1,33 @@
 package com.mycompany.myapp.ui;
+
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
+import javax.swing.JTabbedPane;
 
 /**
  *
  * @author Houta
  */
 public class MainUI extends javax.swing.JFrame {
+
     static GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
     static int WIDTH = gd.getDisplayMode().getWidth();
     static int HEIGHT = gd.getDisplayMode().getHeight();
     private ManagerStudentPanel mStudent = null;
     private ManagerClassPanel mClass = null;
+    private HelpPanel mHelp = null;
+
     /**
      * Creates new form MainUI
      */
     public MainUI() {
 //        setUndecorated(true);
+        super("Quản Lý Sinh Viên");
         initComponents();
-        setSize(WIDTH/2, HEIGHT/2);
+        setSize(WIDTH / 2, HEIGHT / 2);
         setLocationRelativeTo(null);
-        setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH); 
+        setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
         toolBar.setFloatable(false);
     }
 
@@ -39,13 +45,13 @@ public class MainUI extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         quanLyLH = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
-        jButton3 = new javax.swing.JButton();
+        danhSachMonHoc = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
-        jButton4 = new javax.swing.JButton();
-        jSeparator5 = new javax.swing.JToolBar.Separator();
-        jButton2 = new javax.swing.JButton();
+        taiKhoan = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
-        jButton1 = new javax.swing.JButton();
+        caiDat = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JToolBar.Separator();
+        troGiup = new javax.swing.JButton();
         jTabPanel = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,11 +63,16 @@ public class MainUI extends javax.swing.JFrame {
 
         toolBar.setRollover(true);
         toolBar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        toolBar.setMinimumSize(new java.awt.Dimension(1300, 76));
 
+        quanLySV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         quanLySV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/10207-man-student-light-skin-tone-icon-64.png"))); // NOI18N
         quanLySV.setText("Quản Lý Sinh Viên ");
         quanLySV.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         quanLySV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        quanLySV.setMaximumSize(new java.awt.Dimension(240, 72));
+        quanLySV.setMinimumSize(new java.awt.Dimension(150, 72));
+        quanLySV.setPreferredSize(new java.awt.Dimension(240, 72));
         quanLySV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quanLySVActionPerformed(evt);
@@ -70,8 +81,12 @@ public class MainUI extends javax.swing.JFrame {
         toolBar.add(quanLySV);
         toolBar.add(jSeparator1);
 
+        quanLyLH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         quanLyLH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/gpa-icon-64.png"))); // NOI18N
         quanLyLH.setText("Quản Lý Lớp Học Phần ");
+        quanLyLH.setMaximumSize(new java.awt.Dimension(270, 72));
+        quanLyLH.setMinimumSize(new java.awt.Dimension(260, 72));
+        quanLyLH.setPreferredSize(new java.awt.Dimension(240, 72));
         quanLyLH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quanLyLHActionPerformed(evt);
@@ -80,31 +95,63 @@ public class MainUI extends javax.swing.JFrame {
         toolBar.add(quanLyLH);
         toolBar.add(jSeparator2);
 
-        jButton3.setText("Danh Sách Môn Học");
-        toolBar.add(jButton3);
-        toolBar.add(jSeparator3);
-
-        jButton4.setText("Danh sách giảng viên");
-        toolBar.add(jButton4);
-        toolBar.add(jSeparator5);
-
-        jButton2.setText("Thông tin cá nhân");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(jButton2);
-        toolBar.add(jSeparator4);
-
-        jButton1.setText("Tài Khoản");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        danhSachMonHoc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        danhSachMonHoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/List-mon-hoc-64.png"))); // NOI18N
+        danhSachMonHoc.setText("Danh Sách Môn Học");
+        danhSachMonHoc.setMaximumSize(new java.awt.Dimension(270, 72));
+        danhSachMonHoc.setMinimumSize(new java.awt.Dimension(260, 72));
+        danhSachMonHoc.setPreferredSize(new java.awt.Dimension(240, 72));
+        danhSachMonHoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                danhSachMonHocActionPerformed(evt);
             }
         });
-        toolBar.add(jButton1);
+        toolBar.add(danhSachMonHoc);
+        toolBar.add(jSeparator3);
+
+        taiKhoan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        taiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/account.png"))); // NOI18N
+        taiKhoan.setText("Tài Khoản");
+        taiKhoan.setFocusable(false);
+        taiKhoan.setMaximumSize(new java.awt.Dimension(270, 72));
+        taiKhoan.setMinimumSize(new java.awt.Dimension(260, 72));
+        taiKhoan.setPreferredSize(new java.awt.Dimension(240, 72));
+        taiKhoan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                taiKhoanActionPerformed(evt);
+            }
+        });
+        toolBar.add(taiKhoan);
+        toolBar.add(jSeparator4);
+
+        caiDat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        caiDat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/setting.png"))); // NOI18N
+        caiDat.setText("Cài Đặt");
+        caiDat.setFocusable(false);
+        caiDat.setMaximumSize(new java.awt.Dimension(270, 72));
+        caiDat.setMinimumSize(new java.awt.Dimension(260, 72));
+        caiDat.setPreferredSize(new java.awt.Dimension(240, 72));
+        caiDat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                caiDatActionPerformed(evt);
+            }
+        });
+        toolBar.add(caiDat);
+        toolBar.add(jSeparator5);
+
+        troGiup.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        troGiup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/support.png"))); // NOI18N
+        troGiup.setText("Trợ Giúp");
+        troGiup.setFocusable(false);
+        troGiup.setMaximumSize(new java.awt.Dimension(260, 72));
+        troGiup.setMinimumSize(new java.awt.Dimension(260, 72));
+        troGiup.setPreferredSize(new java.awt.Dimension(240, 72));
+        troGiup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                troGiupActionPerformed(evt);
+            }
+        });
+        toolBar.add(troGiup);
 
         jTabPanel.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabPanel.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
@@ -114,11 +161,13 @@ public class MainUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(toolBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabPanel)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,9 +182,9 @@ public class MainUI extends javax.swing.JFrame {
 
     private void quanLySVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quanLySVActionPerformed
         // TODO add your handling code here:
-        if(mStudent == null){
+        if (mStudent == null) {
             mStudent = new ManagerStudentPanel();
-            jTabPanel.addTab("Quản Lý Sinh Viên",mStudent);
+            jTabPanel.addTab("Quản Lý Sinh Viên", mStudent);
             mStudent.setVisible(true);
         }
         jTabPanel.setSelectedComponent(mStudent);
@@ -143,9 +192,9 @@ public class MainUI extends javax.swing.JFrame {
 
     private void quanLyLHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quanLyLHActionPerformed
         // TODO add your handling code here:
-        if(mClass == null){
+        if (mClass == null) {
             mClass = new ManagerClassPanel();
-            jTabPanel.addTab("Quản Lý Lớp Học",mClass);
+            jTabPanel.addTab("Quản Lý Lớp Học", mClass);
             mClass.setVisible(true);
         }
         jTabPanel.setSelectedComponent(mClass);
@@ -158,13 +207,31 @@ public class MainUI extends javax.swing.JFrame {
         login.setVisible(true);
         login.requestFocus();
         login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void taiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taiKhoanActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+//        System.exit(0);
+    }//GEN-LAST:event_taiKhoanActionPerformed
+
+    private void danhSachMonHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_danhSachMonHocActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_danhSachMonHocActionPerformed
+
+    private void troGiupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_troGiupActionPerformed
+        // TODO add your handling code here:
+        if (mHelp == null) {
+            mHelp = new HelpPanel();
+            jTabPanel.addTab("Trợ Giúp", mHelp);
+            mHelp.setVisible(true);
+        }
+        jTabPanel.setSelectedComponent(mHelp);
+    }//GEN-LAST:event_troGiupActionPerformed
+
+    private void caiDatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caiDatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_caiDatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,7 +253,7 @@ public class MainUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MainUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -197,10 +264,8 @@ public class MainUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton caiDat;
+    private javax.swing.JButton danhSachMonHoc;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JToolBar.Separator jSeparator3;
@@ -209,6 +274,8 @@ public class MainUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabPanel;
     private javax.swing.JButton quanLyLH;
     private javax.swing.JButton quanLySV;
+    private javax.swing.JButton taiKhoan;
     private javax.swing.JToolBar toolBar;
+    private javax.swing.JButton troGiup;
     // End of variables declaration//GEN-END:variables
 }
