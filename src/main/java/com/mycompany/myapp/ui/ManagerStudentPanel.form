@@ -63,42 +63,45 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Group type="102" alignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="3" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
                       <Component id="comboBoxFind" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="3" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
                       <Component id="txtFind" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="buttonFind" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="xuatExel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="buttonFind" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="xuatExel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Group type="102" alignment="3" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="3" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                       <Component id="radioTang" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="3" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                       <Component id="radioGiam" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="3" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
                       <Component id="comboBoxSort" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="buttonThem" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nhapExel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="buttonThem" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nhapExel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>

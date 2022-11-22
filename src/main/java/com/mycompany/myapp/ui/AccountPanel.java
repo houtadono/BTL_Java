@@ -4,6 +4,17 @@
  */
 package com.mycompany.myapp.ui;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author Houta
@@ -30,74 +41,405 @@ public class AccountPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        userNow = new javax.swing.JLabel();
+        changeAccount = new javax.swing.JButton();
+        picNow = new javax.swing.JLabel();
+        posionNow = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        passChange = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        namePassChange = new javax.swing.JLabel();
+        nameAccountChange = new javax.swing.JLabel();
+        nameUser = new javax.swing.JLabel();
+        namePass = new javax.swing.JLabel();
+        userAccount = new javax.swing.JTextField();
+        passAccount = new javax.swing.JTextField();
+        choosePic = new javax.swing.JButton();
+        passOld = new javax.swing.JTextField();
+        passNew = new javax.swing.JTextField();
+        passNew2 = new javax.swing.JTextField();
+        namePassOld = new javax.swing.JLabel();
+        namePassNew = new javax.swing.JLabel();
+        namePassNew2 = new javax.swing.JLabel();
+        loginAccount = new javax.swing.JButton();
+        savePass = new javax.swing.JButton();
 
-        jLabel1.setText("Tài Khoản");
+        jLabel1.setBackground(new java.awt.Color(153, 153, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("Thông tin tài khoản");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Tên Đăng Nhập:");
 
-        jLabel4.setText("Vai Trí:");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("Vai Trò:");
 
-        jButton1.setText(" Đổi mật khẩu");
+        userNow.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        userNow.setText("Admin");
+
+        changeAccount.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        changeAccount.setText("Đổi Tài Khoản");
+        changeAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                changeAccountActionPerformed(evt);
+            }
+        });
+
+        picNow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/avatar/cat pc angry.jpg"))); // NOI18N
+        picNow.setInheritsPopupMenu(false);
+        picNow.setMaximumSize(new java.awt.Dimension(200, 634));
+        picNow.setPreferredSize(new java.awt.Dimension(300, 400));
+
+        posionNow.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        posionNow.setText("Admin");
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel8.setText("Mật Khẩu:");
+
+        passChange.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        passChange.setForeground(new java.awt.Color(51, 102, 255));
+        passChange.setText("Thay Đổi Mật Khẩu");
+        passChange.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                passChangeMouseClicked(evt);
+            }
+        });
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator1.setPreferredSize(new java.awt.Dimension(10, 0));
+        jSeparator1.setRequestFocusEnabled(false);
+
+        namePassChange.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        namePassChange.setText("Thay Đổi Mật Khẩu");
+        namePassChange.setEnabled(false);
+
+        nameAccountChange.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        nameAccountChange.setText("Đổi Tài Khoản");
+        nameAccountChange.setEnabled(false);
+
+        nameUser.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nameUser.setText("Tên Đăng Nhập:");
+        nameUser.setEnabled(false);
+
+        namePass.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        namePass.setText("Mật Khẩu:");
+        namePass.setEnabled(false);
+
+        userAccount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        userAccount.setEnabled(false);
+        userAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userAccountActionPerformed(evt);
+            }
+        });
+
+        passAccount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        passAccount.setToolTipText("");
+        passAccount.setEnabled(false);
+
+        choosePic.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        choosePic.setText("Chọn ảnh");
+        choosePic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                choosePicActionPerformed(evt);
+            }
+        });
+
+        passOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        passOld.setEnabled(false);
+        passOld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passOldActionPerformed(evt);
+            }
+        });
+
+        passNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        passNew.setEnabled(false);
+        passNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passNewActionPerformed(evt);
+            }
+        });
+
+        passNew2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        passNew2.setEnabled(false);
+
+        namePassOld.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        namePassOld.setText("Mật Khẩu Hiện Tại:");
+        namePassOld.setEnabled(false);
+
+        namePassNew.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        namePassNew.setText("Mật Khẩu Mới:");
+        namePassNew.setEnabled(false);
+
+        namePassNew2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        namePassNew2.setText("Xác Nhận Mật Khẩu Mới:");
+        namePassNew2.setEnabled(false);
+
+        loginAccount.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        loginAccount.setText("Đăng Nhập");
+        loginAccount.setEnabled(false);
+        loginAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginAccountActionPerformed(evt);
+            }
+        });
+
+        savePass.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        savePass.setText("Lưu Lại");
+        savePass.setEnabled(false);
+        savePass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savePassActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel2)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField1))
-                        .addGap(333, 333, 333))
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(78, 78, 78))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(picNow, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(45, 45, 45)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jLabel4)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(posionNow))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jLabel3)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(userNow)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(38, 38, 38)
+                                                .addComponent(jLabel8)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(passChange))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(changeAccount)
+                                        .addGap(146, 146, 146)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(225, 225, 225)
+                                .addComponent(choosePic)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(nameUser)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(namePassNew2)
+                                        .addComponent(namePassOld, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(namePassNew, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(namePass))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(passAccount)
+                                    .addComponent(userAccount)
+                                    .addComponent(passOld)
+                                    .addComponent(passNew)
+                                    .addComponent(passNew2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(nameAccountChange)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(savePass)
+                                        .addGap(12, 12, 12)))
+                                .addGap(41, 41, 41)))
+                        .addGap(84, 84, 84))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(namePassChange)
+                        .addGap(95, 95, 95))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(loginAccount)
+                        .addGap(130, 130, 130))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(picNow, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(userNow))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(posionNow)
+                                    .addComponent(jLabel4))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(passChange)
+                                    .addComponent(jLabel8))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(choosePic)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(changeAccount)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(namePassChange)
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(passOld, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(namePassOld))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(passNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(namePassNew))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(passNew2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(namePassNew2))
+                        .addGap(26, 26, 26)
+                        .addComponent(savePass)
+                        .addGap(26, 26, 26)
+                        .addComponent(nameAccountChange)
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nameUser)
+                            .addComponent(userAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(namePass)
+                            .addComponent(passAccount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addComponent(loginAccount)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void changeAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changeAccountActionPerformed
+        nameAccountChange.setEnabled(true);
+        nameUser.setEnabled(true);
+        namePass.setEnabled(true);
+        userAccount.setEnabled(true);
+        passAccount.setEnabled(true);
+        loginAccount.setEnabled(true);
+    }//GEN-LAST:event_changeAccountActionPerformed
+
+    private void passChangeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passChangeMouseClicked
+        namePassChange.setEnabled(true);
+        namePassNew.setEnabled(true);
+        namePassNew2.setEnabled(true);
+        namePassOld.setEnabled(true);
+        savePass.setEnabled(true);
+        passNew.setEnabled(true);
+        passNew2.setEnabled(true);
+        passOld.setEnabled(true);
+    }//GEN-LAST:event_passChangeMouseClicked
+
+    private void userAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userAccountActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userAccountActionPerformed
+
+    private void choosePicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosePicActionPerformed
+        String choosePath = "";
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new java.io.File(System.getProperty("user.home") + "\\Desktop"));
+        chooser.setDialogTitle("Chọn ảnh");
+        chooser.setAcceptAllFileFilterUsed(false);
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            choosePath = (chooser.getSelectedFile()).toString();
+        }
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File(choosePath));
+            Image dimg = img.getScaledInstance(picNow.getWidth(), picNow.getHeight(), Image.SCALE_SMOOTH);
+            picNow.setIcon(new ImageIcon(dimg));
+        } catch (IOException ex) {
+            Logger.getLogger(AccountPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+    }//GEN-LAST:event_choosePicActionPerformed
+
+    private void passOldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passOldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passOldActionPerformed
+
+    private void passNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passNewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passNewActionPerformed
+
+    private void loginAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginAccountActionPerformed
+        nameAccountChange.setEnabled(false);
+        nameUser.setEnabled(false);
+        namePass.setEnabled(false);
+        userAccount.setEnabled(false);
+        passAccount.setEnabled(false);
+        loginAccount.setEnabled(false);
+    }//GEN-LAST:event_loginAccountActionPerformed
+
+    private void savePassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savePassActionPerformed
+        namePassChange.setEnabled(false);
+        namePassNew.setEnabled(false);
+        namePassNew2.setEnabled(false);
+        namePassOld.setEnabled(false);
+        savePass.setEnabled(false);
+        passNew.setEnabled(false);
+        passNew2.setEnabled(false);
+        passOld.setEnabled(false);
+    }//GEN-LAST:event_savePassActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton changeAccount;
+    private javax.swing.JButton choosePic;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton loginAccount;
+    private javax.swing.JLabel nameAccountChange;
+    private javax.swing.JLabel namePass;
+    private javax.swing.JLabel namePassChange;
+    private javax.swing.JLabel namePassNew;
+    private javax.swing.JLabel namePassNew2;
+    private javax.swing.JLabel namePassOld;
+    private javax.swing.JLabel nameUser;
+    private javax.swing.JTextField passAccount;
+    private javax.swing.JLabel passChange;
+    private javax.swing.JTextField passNew;
+    private javax.swing.JTextField passNew2;
+    private javax.swing.JTextField passOld;
+    private javax.swing.JLabel picNow;
+    private javax.swing.JLabel posionNow;
+    private javax.swing.JButton savePass;
+    private javax.swing.JTextField userAccount;
+    private javax.swing.JLabel userNow;
     // End of variables declaration//GEN-END:variables
 }
