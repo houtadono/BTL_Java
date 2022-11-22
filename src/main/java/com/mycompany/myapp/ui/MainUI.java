@@ -3,7 +3,6 @@ package com.mycompany.myapp.ui;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
 
 /**
  *
@@ -203,10 +202,10 @@ public class MainUI extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // tab đăng nhập
         // nếu không qua được thì đóng comment vào hết cái này
-        LoginDialog login = new LoginDialog();
-        login.setVisible(true);
-        login.requestFocus();
-        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        LoginDialog login = new LoginDialog();
+//        login.setVisible(true);
+//        login.requestFocus();
+//        login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }//GEN-LAST:event_formWindowOpened
 
