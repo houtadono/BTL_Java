@@ -29,19 +29,15 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jTabPanel" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="toolBar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="toolBar" pref="1300" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="toolBar" min="-2" pref="81" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              <Component id="toolBar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jTabPanel" pref="430" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -81,7 +77,7 @@
               <Dimension value="[150, 72]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 72]"/>
+              <Dimension value="[220, 72]"/>
             </Property>
           </Properties>
           <Events>
@@ -100,10 +96,10 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; L&#x1edb;p H&#x1ecd;c Ph&#x1ea7;n "/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[270, 72]"/>
+              <Dimension value="[240, 72]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[260, 72]"/>
+              <Dimension value="[150, 72]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[240, 72]"/>
@@ -125,10 +121,10 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Danh S&#xe1;ch M&#xf4;n H&#x1ecd;c"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[270, 72]"/>
+              <Dimension value="[240, 72]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[260, 72]"/>
+              <Dimension value="[150, 72]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[240, 72]"/>
@@ -151,13 +147,13 @@
             <Property name="text" type="java.lang.String" value="T&#xe0;i Kho&#x1ea3;n"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[270, 72]"/>
+              <Dimension value="[240, 72]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[260, 72]"/>
+              <Dimension value="[150, 72]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 72]"/>
+              <Dimension value="[205, 72]"/>
             </Property>
           </Properties>
           <Events>
@@ -177,13 +173,13 @@
             <Property name="text" type="java.lang.String" value="C&#xe0;i &#x110;&#x1eb7;t"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[270, 72]"/>
+              <Dimension value="[240, 72]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[260, 72]"/>
+              <Dimension value="[150, 72]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 72]"/>
+              <Dimension value="[203, 72]"/>
             </Property>
           </Properties>
           <Events>
@@ -203,13 +199,13 @@
             <Property name="text" type="java.lang.String" value="Tr&#x1ee3; Gi&#xfa;p"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[260, 72]"/>
+              <Dimension value="[240, 72]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[260, 72]"/>
+              <Dimension value="[150, 72]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[240, 72]"/>
+              <Dimension value="[203, 72]"/>
             </Property>
           </Properties>
           <Events>

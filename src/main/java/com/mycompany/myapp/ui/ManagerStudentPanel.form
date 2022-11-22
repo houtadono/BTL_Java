@@ -20,12 +20,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jSeparator1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
-          <Component id="jScrollPane1" pref="707" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -56,34 +50,60 @@
                   <Component id="nhapExel" max="32767" attributes="0"/>
                   <Component id="xuatExel" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jSeparator1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="comboBoxFind" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtFind" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="3" attributes="0">
+                      <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="3" attributes="0">
+                      <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
+                      <Component id="comboBoxFind" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="3" attributes="0">
+                      <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
+                      <Component id="txtFind" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="buttonFind" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="xuatExel" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="xuatExel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="radioTang" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="radioGiam" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="comboBoxSort" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="3" attributes="0">
+                      <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="3" attributes="0">
+                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                      <Component id="radioTang" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="3" attributes="0">
+                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                      <Component id="radioGiam" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="3" attributes="0">
+                      <EmptySpace min="17" pref="17" max="-2" attributes="0"/>
+                      <Component id="comboBoxSort" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="buttonThem" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nhapExel" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="nhapExel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="570" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -193,15 +213,39 @@
         <Component class="javax.swing.JTable" name="tableSV">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
-                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+              <Table columnCount="8" rowCount="4">
+                <Column editable="true" title="M&#xe3; Sinh Vi&#xea;n" type="java.lang.Object"/>
+                <Column editable="true" title="H&#x1ecd; V&#xe0; T&#xea;n" type="java.lang.Object"/>
+                <Column editable="true" title="L&#x1edb;p" type="java.lang.Object"/>
+                <Column editable="true" title="Gi&#x1edb;i T&#xed;nh" type="java.lang.Object"/>
+                <Column editable="true" title="S&#x1ed1; &#x110;i&#x1ec7;n Tho&#x1ea1;i" type="java.lang.Object"/>
+                <Column editable="true" title="Email" type="java.lang.Object"/>
+                <Column editable="true" title="&#x110;&#x1ecb;a Ch&#x1ec9;" type="java.lang.Object"/>
+                <Column editable="true" title="L&#x1ef1;a Ch&#x1ecd;n" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -246,6 +290,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="xuatExel">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/mycompany/myapp/icons/export.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t Exel"/>
       </Properties>
       <Events>
@@ -254,6 +301,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="nhapExel">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/com/mycompany/myapp/icons/import.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Nh&#x1ead;p Exel"/>
       </Properties>
       <Events>

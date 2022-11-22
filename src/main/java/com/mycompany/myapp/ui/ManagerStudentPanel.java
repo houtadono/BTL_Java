@@ -6,17 +6,34 @@ import com.mycompany.myapp.model.SinhVien;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -30,6 +47,7 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton preRadio;
     private StudentInfor studentInfor = null;
     private int chooseSV = 0;
+    private int pos = -1;
 
     /**
      * Creates new form PanelTest
@@ -44,22 +62,24 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
         tableModel = new DefaultTableModel();
 
         tableModel.setColumnIdentifiers(new String[]{"Mã Sinh Viên", "Tên Sinh Viên",
-            "Lớp", "Giới Tính", "Ngày Sinh", "Số ĐT", "Email", "Địa Chỉ", ""});
+            "Lớp", "Giới Tính", "Ngày Sinh", "Số ĐT", "Email", "Địa Chỉ", "Lựa Chọn"});
+
         tableSV.setModel(tableModel);
+
         list = new SinhVienDao().findAll("", "", "", true);
         preRadio = radioTang;
     }
 
     private void loadDataTable() {
         tableModel.setRowCount(0);
-        for (SinhVien it : list) {
-            tableModel.addRow(new Object[]{it.getMaSV(), it.getTenSV(), it.getLopSV(),
-                it.getGioiTinh(), it.getNgaySinh(), it.getSoDienThoai(), it.getEmail(), it.getDiaChi()});
-        }
-
         TableColumn buttonColumn = tableSV.getColumnModel().getColumn(8);
         buttonColumn.setCellRenderer(new ButtonRenderer());
         buttonColumn.setCellEditor(new ButtonEditor(new JCheckBox()));
+        for (SinhVien it : list) {
+            tableModel.addRow(new Object[]{it.getMaSV(), it.getTenSV(), it.getLopSV(),
+                it.getGioiTinh(), it.getNgaySinh(), it.getSoDienThoai(), it.getEmail(), it.getDiaChi(), buttonColumn});
+        }
+
         tableModel.fireTableDataChanged();
     }
 
@@ -136,13 +156,13 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
 
         tableSV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã Sinh Viên", "Họ Và Tên", "Lớp", "Giới Tính", "Số Điện Thoại", "Email", "Địa Chỉ", "Lựa Chọn"
             }
         ));
         jScrollPane1.setViewportView(tableSV);
@@ -155,6 +175,7 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
             }
         });
 
+        xuatExel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/export.png"))); // NOI18N
         xuatExel.setText("Xuất Exel");
         xuatExel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +183,7 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
             }
         });
 
+        nhapExel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/import.png"))); // NOI18N
         nhapExel.setText("Nhập Exel");
         nhapExel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,11 +195,6 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator1)
-                .addContainerGap())
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,31 +218,49 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(nhapExel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(xuatExel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(xuatExel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1)
+                .addContainerGap())
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(comboBoxFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(comboBoxFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(buttonFind)
-                    .addComponent(xuatExel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(xuatExel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(radioTang)
-                    .addComponent(radioGiam)
-                    .addComponent(comboBoxSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(radioTang))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(radioGiam))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(comboBoxSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(buttonThem)
-                    .addComponent(nhapExel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nhapExel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE))
+                .addComponent(jScrollPane1))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -317,7 +352,127 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
 
     private void nhapExelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nhapExelActionPerformed
         // TODO add your handling code here:
+        JFileChooser chooser;
+        String choosePath = "";
+
+        // Đường dẫn
+        chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new java.io.File(System.getProperty("user.home") + "\\Desktop"));
+        chooser.setDialogTitle("Chọn File");
+        chooser.setAcceptAllFileFilterUsed(false);
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            choosePath = (chooser.getSelectedFile()).toString();
+        }
+        System.out.println(choosePath);
+        try {
+            //        Đọc file Exel
+            readExcel(choosePath);
+        } catch (IOException ex) {
+            Logger.getLogger(ManagerStudentPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(ManagerStudentPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_nhapExelActionPerformed
+
+    public void readExcel(String excelFilePath) throws IOException, ParseException {
+        // Get file
+        InputStream inputStream = new FileInputStream(new File(excelFilePath));
+
+        // Get workbook
+        Workbook workbook = getWorkbook(inputStream, excelFilePath);
+
+        // Get sheet
+        Sheet sheet = workbook.getSheetAt(0);
+
+        // Get all rows
+        Iterator<Row> iterator = sheet.iterator();
+        while (iterator.hasNext()) {
+            Row nextRow = iterator.next();
+            if (nextRow.getRowNum() == 0) {
+                // Ignore header
+                continue;
+            }
+
+            // Get all cells
+            Iterator<Cell> cellIterator = nextRow.cellIterator();
+
+            // Read cells and set value for SinhVien object
+            SinhVien sinhVien = new SinhVien();
+            while (cellIterator.hasNext()) {
+                //Read cell
+                Cell cell = cellIterator.next();
+                // Set value for SinhVien object
+                int columnIndex = cell.getColumnIndex();
+                switch (columnIndex) {
+//                  Ma Sinh Vien
+                    case 1:
+                        sinhVien.setMaSV((cell.getStringCellValue()).trim());
+                        break;
+//                  Ho Va Ten
+                    case 2:
+                        sinhVien.setTenSV((cell.getStringCellValue()).trim());
+                        break;
+//                  Lop
+                    case 3:
+                        sinhVien.setLopSV((cell.getStringCellValue()).trim());
+                        break;
+//                  Gioi Tinh                        
+                    case 4:
+                        sinhVien.setGioiTinh((cell.getStringCellValue()).trim().equals("Nam") ? 1 : 0);
+                        break;
+//                  Ngay Sinh
+                    case 5:
+                        String sa = (cell.getStringCellValue()).trim();
+                        sinhVien.setNgaySinh(java.sql.Date.valueOf(LocalDate.parse(sa, DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
+                        break;
+//                  So Dien Thoai                        
+                    case 6:
+                        sinhVien.setSoDienThoai(cell.getStringCellValue());
+                        break;
+//                  Email                        
+                    case 7:
+                        sinhVien.setEmail(cell.getStringCellValue());
+                        break;
+//                  Dia Chi                        
+                    case 8:
+                        sinhVien.setDiaChi(cell.getStringCellValue());
+                        break;
+//                  Ghi Chu                        
+                    case 9:
+                        sinhVien.setGhiChu(cell.getStringCellValue());
+                        break;
+                }
+            }
+
+            boolean k = new SinhVienDao().addSinhVien(sinhVien);
+            if (k) {
+                pos = 0;
+                list.add(pos, sinhVien);
+                tableModel.insertRow(pos,
+                        new Object[]{
+                            sinhVien.getMaSV(), sinhVien.getTenSV(), sinhVien.getLopSV(),
+                            sinhVien.getGioiTinh(), sinhVien.getNgaySinh(), sinhVien.getSoDienThoai(),
+                            sinhVien.getEmail(), sinhVien.getDiaChi()
+                        });
+            }
+        }
+        MessageDialogHelper.showMessageDialog(this, "Nhập Danh Sách Xong", "Thông báo");
+        workbook.close();
+        inputStream.close();
+    }
+
+    // Get Workbook
+    private Workbook getWorkbook(InputStream inputStream, String excelFilePath) throws IOException {
+        Workbook workbook = null;
+        if (excelFilePath.endsWith("xlsx")) {
+            workbook = new XSSFWorkbook(inputStream);
+        } else if (excelFilePath.endsWith("xls")) {
+            workbook = new HSSFWorkbook(inputStream);
+        } else {
+            throw new IllegalArgumentException("The specified file is not Excel file");
+        }
+        return workbook;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonFind;
@@ -361,6 +516,7 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
             studentInfor.setVisible(true);
         }
     }
+
 }
 
 class ButtonRenderer extends JButton implements TableCellRenderer {
