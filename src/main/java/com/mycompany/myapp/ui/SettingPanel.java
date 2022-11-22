@@ -4,17 +4,22 @@
  */
 package com.mycompany.myapp.ui;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Nakaa2314
  */
 public class SettingPanel extends javax.swing.JPanel {
 
+    public static SettingPanel stpanel;
+
     /**
      * Creates new form SettingPanel
      */
     public SettingPanel() {
         initComponents();
+        stpanel = this;
     }
 
     /**
@@ -26,30 +31,74 @@ public class SettingPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        reSize = new javax.swing.JCheckBox();
+        fullScreen = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setText("jLabel1");
+        reSize.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        reSize.setText("Thu phóng màn hình");
+        reSize.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reSizeActionPerformed(evt);
+            }
+        });
+
+        fullScreen.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        fullScreen.setText("Toàn Màn Hình");
+        fullScreen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fullScreenActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel1.setText("Lựa Chọn Cài Đặt");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(220, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(143, 143, 143))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(reSize)
+                    .addComponent(fullScreen))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(214, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(70, 70, 70))
+                .addGap(18, 18, 18)
+                .addComponent(reSize)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(fullScreen)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void reSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reSizeActionPerformed
+        if (reSize.isSelected()) {
+            MainUI.mUa.setResizable(true);
+        } else {
+            MainUI.mUa.setResizable(false);
+        }
+    }//GEN-LAST:event_reSizeActionPerformed
+
+    private void fullScreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullScreenActionPerformed
+        if (fullScreen.isSelected()) {
+            MainUI.mUa.setExtendedState(JFrame.MAXIMIZED_BOTH);;
+        } else {
+            MainUI.mUa.setExtendedState(JFrame.NORMAL);
+        }
+    }//GEN-LAST:event_fullScreenActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox fullScreen;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JCheckBox reSize;
     // End of variables declaration//GEN-END:variables
 }
