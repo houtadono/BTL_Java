@@ -62,22 +62,24 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
         tableModel = new DefaultTableModel();
 
         tableModel.setColumnIdentifiers(new String[]{"Mã Sinh Viên", "Tên Sinh Viên",
-            "Lớp", "Giới Tính", "Ngày Sinh", "Số ĐT", "Email", "Địa Chỉ", ""});
+            "Lớp", "Giới Tính", "Ngày Sinh", "Số ĐT", "Email", "Địa Chỉ", "Lựa Chọn"});
+
         tableSV.setModel(tableModel);
+
         list = new SinhVienDao().findAll("", "", "", true);
         preRadio = radioTang;
     }
 
     private void loadDataTable() {
         tableModel.setRowCount(0);
-        for (SinhVien it : list) {
-            tableModel.addRow(new Object[]{it.getMaSV(), it.getTenSV(), it.getLopSV(),
-                it.getGioiTinh(), it.getNgaySinh(), it.getSoDienThoai(), it.getEmail(), it.getDiaChi()});
-        }
-
         TableColumn buttonColumn = tableSV.getColumnModel().getColumn(8);
         buttonColumn.setCellRenderer(new ButtonRenderer());
         buttonColumn.setCellEditor(new ButtonEditor(new JCheckBox()));
+        for (SinhVien it : list) {
+            tableModel.addRow(new Object[]{it.getMaSV(), it.getTenSV(), it.getLopSV(),
+                it.getGioiTinh(), it.getNgaySinh(), it.getSoDienThoai(), it.getEmail(), it.getDiaChi(), buttonColumn});
+        }
+
         tableModel.fireTableDataChanged();
     }
 
@@ -154,13 +156,13 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
 
         tableSV.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã Sinh Viên", "Họ Và Tên", "Lớp", "Giới Tính", "Số Điện Thoại", "Email", "Địa Chỉ", "Lựa Chọn"
             }
         ));
         jScrollPane1.setViewportView(tableSV);
@@ -173,6 +175,7 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
             }
         });
 
+        xuatExel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/export.png"))); // NOI18N
         xuatExel.setText("Xuất Exel");
         xuatExel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +183,7 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
             }
         });
 
+        nhapExel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/import.png"))); // NOI18N
         nhapExel.setText("Nhập Exel");
         nhapExel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,11 +195,6 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator1)
-                .addContainerGap())
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,31 +218,49 @@ public class ManagerStudentPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(nhapExel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(xuatExel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(xuatExel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1)
+                .addContainerGap())
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(comboBoxFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(comboBoxFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(buttonFind)
-                    .addComponent(xuatExel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(xuatExel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(radioTang)
-                    .addComponent(radioGiam)
-                    .addComponent(comboBoxSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(radioTang))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(radioGiam))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(comboBoxSort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(buttonThem)
-                    .addComponent(nhapExel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nhapExel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE))
+                .addComponent(jScrollPane1))
         );
     }// </editor-fold>//GEN-END:initComponents
 

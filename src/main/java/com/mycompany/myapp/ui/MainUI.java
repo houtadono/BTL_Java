@@ -16,6 +16,9 @@ public class MainUI extends javax.swing.JFrame {
     private ManagerStudentPanel mStudent = null;
     private ManagerClassPanel mClass = null;
     private HelpPanel mHelp = null;
+    private ListSubjects mListSubjects = null;
+    private AccountPanel mAccountPanel = null;
+    private SettingPanel mSettingPanel = null;
 
     /**
      * Creates new form MainUI
@@ -24,9 +27,10 @@ public class MainUI extends javax.swing.JFrame {
 //        setUndecorated(true);
         super("Quản Lý Sinh Viên");
         initComponents();
-        setSize(WIDTH / 2, HEIGHT / 2);
+        setSize(1366, 768);
         setLocationRelativeTo(null);
-        setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
+        setResizable(false);
+//        setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
         toolBar.setFloatable(false);
     }
 
@@ -71,7 +75,7 @@ public class MainUI extends javax.swing.JFrame {
         quanLySV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         quanLySV.setMaximumSize(new java.awt.Dimension(240, 72));
         quanLySV.setMinimumSize(new java.awt.Dimension(150, 72));
-        quanLySV.setPreferredSize(new java.awt.Dimension(240, 72));
+        quanLySV.setPreferredSize(new java.awt.Dimension(220, 72));
         quanLySV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quanLySVActionPerformed(evt);
@@ -83,8 +87,8 @@ public class MainUI extends javax.swing.JFrame {
         quanLyLH.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         quanLyLH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/gpa-icon-64.png"))); // NOI18N
         quanLyLH.setText("Quản Lý Lớp Học Phần ");
-        quanLyLH.setMaximumSize(new java.awt.Dimension(270, 72));
-        quanLyLH.setMinimumSize(new java.awt.Dimension(260, 72));
+        quanLyLH.setMaximumSize(new java.awt.Dimension(240, 72));
+        quanLyLH.setMinimumSize(new java.awt.Dimension(150, 72));
         quanLyLH.setPreferredSize(new java.awt.Dimension(240, 72));
         quanLyLH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,8 +101,8 @@ public class MainUI extends javax.swing.JFrame {
         danhSachMonHoc.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         danhSachMonHoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/List-mon-hoc-64.png"))); // NOI18N
         danhSachMonHoc.setText("Danh Sách Môn Học");
-        danhSachMonHoc.setMaximumSize(new java.awt.Dimension(270, 72));
-        danhSachMonHoc.setMinimumSize(new java.awt.Dimension(260, 72));
+        danhSachMonHoc.setMaximumSize(new java.awt.Dimension(240, 72));
+        danhSachMonHoc.setMinimumSize(new java.awt.Dimension(150, 72));
         danhSachMonHoc.setPreferredSize(new java.awt.Dimension(240, 72));
         danhSachMonHoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,9 +116,9 @@ public class MainUI extends javax.swing.JFrame {
         taiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/account.png"))); // NOI18N
         taiKhoan.setText("Tài Khoản");
         taiKhoan.setFocusable(false);
-        taiKhoan.setMaximumSize(new java.awt.Dimension(270, 72));
-        taiKhoan.setMinimumSize(new java.awt.Dimension(260, 72));
-        taiKhoan.setPreferredSize(new java.awt.Dimension(240, 72));
+        taiKhoan.setMaximumSize(new java.awt.Dimension(240, 72));
+        taiKhoan.setMinimumSize(new java.awt.Dimension(150, 72));
+        taiKhoan.setPreferredSize(new java.awt.Dimension(205, 72));
         taiKhoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 taiKhoanActionPerformed(evt);
@@ -127,9 +131,9 @@ public class MainUI extends javax.swing.JFrame {
         caiDat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/setting.png"))); // NOI18N
         caiDat.setText("Cài Đặt");
         caiDat.setFocusable(false);
-        caiDat.setMaximumSize(new java.awt.Dimension(270, 72));
-        caiDat.setMinimumSize(new java.awt.Dimension(260, 72));
-        caiDat.setPreferredSize(new java.awt.Dimension(240, 72));
+        caiDat.setMaximumSize(new java.awt.Dimension(240, 72));
+        caiDat.setMinimumSize(new java.awt.Dimension(150, 72));
+        caiDat.setPreferredSize(new java.awt.Dimension(203, 72));
         caiDat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 caiDatActionPerformed(evt);
@@ -142,9 +146,9 @@ public class MainUI extends javax.swing.JFrame {
         troGiup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/myapp/icons/support.png"))); // NOI18N
         troGiup.setText("Trợ Giúp");
         troGiup.setFocusable(false);
-        troGiup.setMaximumSize(new java.awt.Dimension(260, 72));
-        troGiup.setMinimumSize(new java.awt.Dimension(260, 72));
-        troGiup.setPreferredSize(new java.awt.Dimension(240, 72));
+        troGiup.setMaximumSize(new java.awt.Dimension(240, 72));
+        troGiup.setMinimumSize(new java.awt.Dimension(150, 72));
+        troGiup.setPreferredSize(new java.awt.Dimension(203, 72));
         troGiup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 troGiupActionPerformed(evt);
@@ -162,17 +166,14 @@ public class MainUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabPanel)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jTabPanel))
+            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE))
         );
 
@@ -211,11 +212,22 @@ public class MainUI extends javax.swing.JFrame {
 
     private void taiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taiKhoanActionPerformed
         // TODO add your handling code here:
-//        System.exit(0);
+        if (mAccountPanel == null) {
+            mAccountPanel = new AccountPanel();
+            jTabPanel.addTab("Tài Khoản", mAccountPanel);
+            mListSubjects.setVisible(true);
+        }
+        jTabPanel.setSelectedComponent(mAccountPanel);
     }//GEN-LAST:event_taiKhoanActionPerformed
 
     private void danhSachMonHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_danhSachMonHocActionPerformed
         // TODO add your handling code here:
+        if (mListSubjects == null) {
+            mListSubjects = new ListSubjects();
+            jTabPanel.addTab("Danh Sách Môn Học", mListSubjects);
+            mListSubjects.setVisible(true);
+        }
+        jTabPanel.setSelectedComponent(mListSubjects);
     }//GEN-LAST:event_danhSachMonHocActionPerformed
 
     private void troGiupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_troGiupActionPerformed
@@ -230,6 +242,12 @@ public class MainUI extends javax.swing.JFrame {
 
     private void caiDatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caiDatActionPerformed
         // TODO add your handling code here:
+        if (mSettingPanel == null) {
+            mSettingPanel = new SettingPanel();
+            jTabPanel.addTab("Cài Đặt", mSettingPanel);
+            mSettingPanel.setVisible(true);
+        }
+        jTabPanel.setSelectedComponent(mSettingPanel);
     }//GEN-LAST:event_caiDatActionPerformed
 
     /**
